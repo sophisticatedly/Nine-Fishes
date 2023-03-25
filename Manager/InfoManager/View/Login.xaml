@@ -1,0 +1,88 @@
+﻿<Window x:Class="InfoManager.View.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InfoManager.View"
+        mc:Ignorable="d"
+        Name="window"
+        Title="Login" Height="600" Width="360"
+        FontFamily="Microsoft YaHei" FontWeight="ExtraLight"
+        ResizeMode="NoResize" WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="{x:Null}"
+        >
+    <Window.Resources>
+        <ControlTemplate TargetType="Button" x:Key="ForkButton">
+            <Border Background="Transparent" Name="back">
+                <Path Data="M0 0 12 12M0 12 12 0" Stroke="White" StrokeThickness="1" VerticalAlignment="Center" HorizontalAlignment="Center"></Path>
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="back" Property="Background" Value="#22FFFFFF" ></Setter>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter TargetName="back" Property="Background" Value="#11FFFFFF" ></Setter>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
+
+    <Border Margin="5" Background="White" CornerRadius="10" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.8*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="60" />
+            </Grid.RowDefinitions>
+            <Border Background="#007DFA" CornerRadius="10,10,0,0" />
+            <Button VerticalAlignment="Top" HorizontalAlignment="Right" Width="40" Height="30" Template="{StaticResource ForkButton}" Command="{Binding CloseWindowComnand}" CommandParameter="{Binding ElementName=window}"></Button>
+            <StackPanel VerticalAlignment="Bottom">
+                <Border Width="100" Height="100" CornerRadius="40">
+                    <Border.Background>
+                        <ImageBrush ImageSource="../Assets/logo.jpg" />
+                    </Border.Background>
+                    <Border.Effect>
+                        <DropShadowEffect Color="Gray"></DropShadowEffect>
+                    </Border.Effect>
+                </Border>
+                <TextBlock Text="汪氏集团员工信息管理平台" FontSize='20' Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" Margin="20"/>
+            </StackPanel>
+            <Grid Grid.Row="1" Margin="10">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox BorderThickness="0" HorizontalAlignment="Left" Grid.Column="0" Text="&#xe609;" FontSize="35" Foreground="#8a8a8a" FontFamily="../Assets/fonts/#iconfont" Width="40" Height="40"/>
+                    <TextBox BorderThickness="1"  HorizontalAlignment="Left" Grid.Column="1" Text="{Binding UserName}" Name="UserName" Width="240" Height="40" FontSize="20"/>
+                </Grid>
+                <Grid Grid.Row="1"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe60a;" FontSize="35" Foreground="#8a8a8a"  FontFamily="../Assets/fonts/#iconfont" Width="40" Height="40"/>
+                    <Border CornerRadius="10"/>
+                    <TextBox Grid.Column="1" BorderThickness="1"  HorizontalAlignment="Left" Name="PassWord" Width="240" Height="40" FontSize="20"/>
+                </Grid>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe600;" FontFamily="../Assets/fonts/#iconfont" Foreground="#8a8a8a" FontSize="35" Width="40" Height="40"/>
+                    <TextBox BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="Num" Width="240" Height="40" FontSize="20"/>
+                </Grid>
+                <Button Background="#007DFA" Content="登录" FontSize='20' Foreground="White" FontWeight="Bold" Grid.Row="3" Height="40" Click="Button_Click"/>
+                <TextBlock Text="登陆失败" Visibility="Hidden" Grid.Row="4" Height="40"/>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>
