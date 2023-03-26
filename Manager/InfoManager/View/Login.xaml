@@ -45,7 +45,7 @@
                         <DropShadowEffect Color="Gray"></DropShadowEffect>
                     </Border.Effect>
                 </Border>
-                <TextBlock Text="汪氏集团员工信息管理平台" FontSize='20' Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" Margin="20"/>
+                <TextBlock Text="员工信息管理平台" FontSize='20' Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" Margin="20"/>
             </StackPanel>
             <Grid Grid.Row="1" Margin="10">
                 <Grid.RowDefinitions>
