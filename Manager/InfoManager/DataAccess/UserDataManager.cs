@@ -87,9 +87,9 @@ namespace InfoManager.DataAccess
                     xml2.Save(fullPath);
                 }
             } 
-            catch 
+            catch (Exception e)
             {
-                throw;
+                throw e;
             }
             
         }
