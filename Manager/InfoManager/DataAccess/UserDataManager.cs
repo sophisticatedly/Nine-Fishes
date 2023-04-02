@@ -87,6 +87,7 @@ namespace InfoManager.DataAccess
                     xml2.Save(fullPath);
                 }
             } 
+            //test pull of git
             catch (Exception e)
             {
                 throw e;
