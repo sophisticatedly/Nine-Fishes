@@ -56,7 +56,9 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Common\CommandBase.cs" />
+    <Compile Include="Common\NotifyBase.cs" />
     <Compile Include="DataAccess\UserDataManager.cs" />
+    <Compile Include="Model\LoginModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
