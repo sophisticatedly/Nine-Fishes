@@ -1,11 +1,12 @@
 ﻿using System;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Xml;
 namespace InfoManager.DataAccess
 {
     public class UserDataManager
     {
-        public void xmlAccess(string UserName, string PassWord, string Num)
+        public static void xmlAccess(string UserName, string PassWord, string Num)
         {
             string Path = "D:\\ProgramData\\";
             try 
@@ -93,5 +94,74 @@ namespace InfoManager.DataAccess
             }
             
         }
+
+        public bool hasExistPerson(string Number,string nodName = "UserName")
+        {
+            try
+            {
+                string Path = "D:\\ProgramData\\infoList.xml";
+                if (!File.Exists(Path))
+                {
+                    return false;
+                }
+                else
+                {
+                    XmlDocument readDoc = new XmlDocument();
+                    readDoc.Load(Path);
+                    XmlNode Rootnode = readDoc.DocumentElement;
+                    foreach (XmlNode node in Rootnode.ChildNodes)
+                    {
+                        if (node.Name.Equals(nodName) && node.Attributes[nodName].Value.Equals(Number))
+                        {
+                            return true;
+                        }
+                    }
+                    return false;
+                }
+            }
+            catch(Exception exception)
+            {
+                throw exception;
+            }
+            
+        }
+
+        public static bool isMobile(string Mobile)
+        {
+            if (string.IsNullOrEmpty(Mobile))
+                return false;
+            return Regex.IsMatch(Mobile, @"^(1)\d{10}$");
+        }
+
+        public static bool isPassWord(string PassWord)
+        {
+            if (!string.IsNullOrEmpty(PassWord) && Regex.IsMatch(PassWord, @"^[a-zA-Z_0-9]{6,12}$"))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool isInvitationCode(string InvitationCode, string[] Codes)
+        {
+            if (!string .IsNullOrEmpty(InvitationCode))
+            {
+                foreach(string code in Codes)
+                {
+                    if (code.Equals(InvitationCode))
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+            else
+            {
+                return false;
+            }
+        }        
     }
 }

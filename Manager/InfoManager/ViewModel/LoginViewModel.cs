@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using InfoManager.Common;
 using InfoManager.Model;
@@ -25,7 +20,6 @@ namespace InfoManager.ViewModel
             });
             this.CloseWindowComnand.DoCanExecute = new Func<object, bool>((o) => { return true; });
             this.LoginModel.UserName = 19955432136.ToString();
-            this.user = 123456.ToString();
         }
 
     }

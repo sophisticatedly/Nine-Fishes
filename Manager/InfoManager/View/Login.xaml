@@ -60,7 +60,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox BorderThickness="0" HorizontalAlignment="Left" Grid.Column="0" Text="&#xe609;" FontSize="35" Foreground="#8a8a8a" FontFamily="../Assets/fonts/#iconfont" Width="40" Height="40"/>
+                    <TextBox BorderThickness="0" HorizontalAlignment="Left" Grid.Column="0" Text="&#xe609;" FontSize="35" Foreground="#8a8a8a" FontFamily="../Assets/fonts/#iconfont" IsReadOnly="True" Width="40" Height="40"/>
                     <TextBox BorderThickness="1"  HorizontalAlignment="Left" Grid.Column="1" Text="{Binding LoginModel.UserName}" Name="UserName" Width="240" Height="40" FontSize="20"/>
                 </Grid>
                 <Grid Grid.Row="1"  >
@@ -68,7 +68,7 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe60a;" FontSize="35" Foreground="#8a8a8a"  FontFamily="../Assets/fonts/#iconfont" Width="40" Height="40"/>
+                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe60a;" FontSize="35" Foreground="#8a8a8a"  FontFamily="../Assets/fonts/#iconfont" IsReadOnly="True" Width="40" Height="40"/>
                     <Border CornerRadius="10"/>
                     <TextBox Grid.Column="1" BorderThickness="1"  HorizontalAlignment="Left" Name="PassWord" Width="240" Height="40" FontSize="20"/>
                 </Grid>
@@ -77,11 +77,10 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe600;" FontFamily="../Assets/fonts/#iconfont" Foreground="#8a8a8a" FontSize="35" Width="40" Height="40"/>
-                    <TextBox BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="Num" Width="240" Height="40" FontSize="20"/>
+                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe600;" FontFamily="../Assets/fonts/#iconfont" Foreground="#8a8a8a" IsReadOnly="True" FontSize="35" Width="40" Height="40"/>
+                    <TextBox BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="InvitationCode" Width="240" Height="40" FontSize="20"/>
                 </Grid>
-                <Button Background="#007DFA" Content="登录" FontSize='20' Foreground="White" FontWeight="Bold" Grid.Row="3" Height="40" Click="Button_Click"/>
-                <TextBlock Text="登陆失败" Visibility="Hidden" Grid.Row="4" Height="40"/>
+                <Button Name="CheckIn" Background="#007DFA" Content="登录" FontSize='20' Foreground="White" FontWeight="Bold" Grid.Row="3" Height="40" Click="Button_Click"/>
             </Grid>
         </Grid>
     </Border>
