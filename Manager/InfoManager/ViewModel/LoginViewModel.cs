@@ -19,7 +19,6 @@ namespace InfoManager.ViewModel
                 (o as Window).Close();
             });
             this.CloseWindowComnand.DoCanExecute = new Func<object, bool>((o) => { return true; });
-            this.LoginModel.UserName = 19955432136.ToString();
         }
 
     }

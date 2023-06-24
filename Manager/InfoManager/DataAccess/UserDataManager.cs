@@ -14,88 +14,73 @@ namespace InfoManager.DataAccess
                 if (!File.Exists(Path + "infoList.xml"))
                 {
                     XmlDocument xml = new XmlDocument();
-                    XmlElement config = xml.CreateElement("root");
-                    xml.AppendChild(config);
+                    XmlElement Config = xml.CreateElement("Root");
+                    xml.AppendChild(Config);
+                    XmlElement workerNode = xml.CreateElement("Worker");
                     XmlElement User = xml.CreateElement("UserName");
                     User.InnerText = UserName;
+                    workerNode.AppendChild(User);
                     XmlElement Password = xml.CreateElement("PassName");
                     Password.InnerText = PassWord;
+                    workerNode.AppendChild(Password);
                     XmlElement Nm = xml.CreateElement("Num");
                     Nm.InnerText = Num;
-
-                    config.AppendChild(User);
-                    config.AppendChild(Password);
-                    config.AppendChild(Nm);
+                    workerNode.AppendChild(Nm);
+                    Config.AppendChild(workerNode);
 
                     xml.Save(Path + "infoList.xml");
                 }
-                XmlDocument xmldocument = new XmlDocument();
-                xmldocument.Load(Path + "infoList.xml");
-                XmlNode root = xmldocument.SelectSingleNode("root");
-                
-               
-                XmlElement user = xmldocument.CreateElement("UserName");
-                user.InnerText = UserName;
-                root.AppendChild(user);
-
-                XmlElement password = xmldocument.CreateElement("PassName");
-                password.InnerText = PassWord;
-                root.AppendChild(password);
-
-                XmlElement num = xmldocument.CreateElement("Num");
-                num.InnerText = Num;
-                root.AppendChild(num);
-
-
-                xmldocument.Save(Path + "infoList.xml");
-
-                string fullPath = Path + Guid.NewGuid().ToString() + ".xml";
-                if (!File.Exists(fullPath))
-                {
-                    XmlDocument xml2 = new XmlDocument();
-                    XmlElement config2 = xml2.CreateElement("root");
-                    xml2.AppendChild(config2);
-                    XmlElement user2 = xml2.CreateElement("UserName");
-                    user2.InnerText = UserName;
-                    XmlElement password2 = xml2.CreateElement("PassName");
-                    password2.InnerText = PassWord;
-                    XmlElement num2 = xml2.CreateElement("Num");
-                    num2.InnerText = Num;
-
-                    config2.AppendChild(user2);
-                    config2.AppendChild(password2);
-                    config2.AppendChild(num2);
-
-                    xml2.Save(fullPath);
-                }
                 else
                 {
-                    File.Delete(fullPath);
-                    XmlDocument xml2 = new XmlDocument();
-                    XmlElement config2 = xml2.CreateElement("root");
-                    xml2.AppendChild(config2);
-                    XmlElement user2 = xml2.CreateElement("UserName");
-                    user2.InnerText = UserName;
-                    XmlElement password2 = xml2.CreateElement("PassName");
-                    password2.InnerText = PassWord;
-                    XmlElement num2 = xml2.CreateElement("Num");
-                    num2.InnerText = Num;
+                    XmlDocument xmldocument = new XmlDocument();
+                    xmldocument.Load(Path + "infoList.xml");
+                    XmlNode root = xmldocument.SelectSingleNode("Root");
 
-                    config2.AppendChild(user2);
-                    config2.AppendChild(password2);
-                    config2.AppendChild(num2);
+                    XmlElement WorkerNode = xmldocument.CreateElement("Worker");
 
-                    xml2.Save(fullPath);
-                }
+                    XmlElement user = xmldocument.CreateElement("UserName");
+                    user.InnerText = UserName;
+                    WorkerNode.AppendChild(user);
+
+                    XmlElement password = xmldocument.CreateElement("PassName");
+                    password.InnerText = PassWord;
+                    WorkerNode.AppendChild(password);
+
+                    XmlElement num = xmldocument.CreateElement("Num");
+                    num.InnerText = Num;
+                    WorkerNode.AppendChild(num);
+                    root.AppendChild(WorkerNode);
+
+                    xmldocument.Save(Path + "infoList.xml");
+                }                
             }  
-            catch (Exception e)
+            catch (Exception exception)
             {
-                throw e;
-            }
-            
+                throw exception;
+            }           
         }
 
-        public bool hasExistPerson(string Number,string nodName = "UserName")
+
+        public static bool isPassWordCorrect(string Number, string PassWord)
+        {
+            string Path = "D:\\ProgramData\\infoList.xml";
+            XmlDocument readDoc = new XmlDocument();
+            readDoc.Load(Path);
+            XmlNode Rootnode = readDoc.DocumentElement;
+            foreach (XmlNode node in Rootnode.ChildNodes)
+            {
+                foreach (XmlNode node2 in node.ChildNodes)
+                {
+                    if (PassWord.Equals(node2.InnerText) && Number.Equals(node.FirstChild.InnerText))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public static bool hasExistPerson(string Number,string nodName = "UserName")
         {
             try
             {
@@ -111,10 +96,13 @@ namespace InfoManager.DataAccess
                     XmlNode Rootnode = readDoc.DocumentElement;
                     foreach (XmlNode node in Rootnode.ChildNodes)
                     {
-                        if (node.Name.Equals(nodName) && node.Attributes[nodName].Value.Equals(Number))
+                        foreach (XmlNode node2 in node.ChildNodes)
                         {
-                            return true;
-                        }
+                            if (nodName.Equals(node2.Name) && Number.Equals(node2.InnerText))
+                            {
+                                return true;
+                            }
+                        }                       
                     }
                     return false;
                 }

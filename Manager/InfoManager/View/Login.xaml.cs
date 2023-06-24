@@ -29,11 +29,46 @@ namespace InfoManager.View
                 UserDataManager userDataManager = new UserDataManager();
                 if (this.CheckIn.Content.ToString().Equals(loginInfo.str_login))
                 {
-                    if (!userDataManager.hasExistPerson(this.UserName.ToString()))
+                    if (!string.IsNullOrEmpty(this.UserName.Text.ToString().Trim()) && !string.IsNullOrEmpty(this.PassWord.Text.ToString().Trim()))
                     {
-                        MessageBox.Show(loginInfo.str_loginError);
-                        this.CheckIn.Content = loginInfo.str_register;
+                        if (!UserDataManager.isMobile(UserName.Text.ToString().Trim()))
+                        {
+                            MessageBox.Show(loginInfo.str_mobileError);
+                        }
+                        else if (!UserDataManager.isPassWord(this.PassWord.Text.ToString().Trim()))
+                        {
+                            MessageBox.Show(loginInfo.str_passwordError);
+                        }
+                        else
+                        {
+                            if (!UserDataManager.hasExistPerson(this.UserName.Text.ToString()))
+                            {
+                                MessageBox.Show(loginInfo.str_loginError);
+                                this.PassWord.Clear();
+                                this.CodePng.Visibility = Visibility.Visible;
+                                this.InvitationCode.Visibility = Visibility.Visible;
+                                this.InvitationCode.IsReadOnly = false;
+                                this.CheckIn.Content = loginInfo.str_register;
+                            }
+                            else
+                            {
+                                if (!UserDataManager.isPassWordCorrect(this.UserName.Text.Trim().ToString(), this.PassWord.Text.Trim().ToString()))
+                                {
+                                    MessageBox.Show(loginInfo.str_passwordNotCorrect);
+                                }
+                                else
+                                {
+                                    //登录成功以后再写吧
+                                    MessageBox.Show(loginInfo.str_loginSuccess);
+
+                                }
+                            }
+                        }
                     }
+                    else
+                    {
+                        MessageBox.Show(loginInfo.str_loginInfoNotComplete);
+                    }                  
                 }
                 else
                 {
@@ -53,15 +88,25 @@ namespace InfoManager.View
                         }
                         else
                         {
-                            loginInfo.UserName = this.UserName.Text.Trim().ToString();
-                            loginInfo.PassWord = this.PassWord.Text.Trim().ToString();
-                            loginInfo.InvitationCode = this.InvitationCode.Text.Trim().ToString();
-                            //注册信息保存到xml中
-                            UserDataManager.xmlAccess(loginInfo.UserName, loginInfo.PassWord, loginInfo.InvitationCode);
-                            MessageBox.Show(loginInfo.str_success);
-                            //设置成功的标志位
-                            loginInfo.isRegister = LoginModel.isRegisterSuccess.Success;
-                            this.CheckIn.Content = loginInfo.str_login;
+                            if (!UserDataManager.hasExistPerson(this.UserName.Text.Trim().ToString()))
+                            {
+                                loginInfo.UserName = this.UserName.Text.Trim().ToString();
+                                loginInfo.PassWord = this.PassWord.Text.Trim().ToString();
+                                loginInfo.InvitationCode = this.InvitationCode.Text.Trim().ToString();
+                                //注册信息保存到xml中
+                                UserDataManager.xmlAccess(loginInfo.UserName, loginInfo.PassWord, loginInfo.InvitationCode);
+                                MessageBox.Show(loginInfo.str_success);
+                                //设置成功的标志位
+                                loginInfo.isRegister = LoginModel.isRegisterSuccess.Success;
+                                this.CheckIn.Content = loginInfo.str_login;
+                                this.InvitationCode.Visibility = Visibility.Hidden;
+                                this.PassWord.Clear();
+                            }
+                            else
+                            {
+                                MessageBox.Show(loginInfo.str_hasBeenRegister);
+                            }
+                           
                         }
                     }
                     else
@@ -70,9 +115,9 @@ namespace InfoManager.View
                     }
                 }
             }
-            catch(Exception excption)
+            catch(Exception exception)
             {
-                throw excption;
+                throw exception;
             }            
         }
 

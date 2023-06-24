@@ -77,8 +77,8 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
-                    <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe600;" FontFamily="../Assets/fonts/#iconfont" Foreground="#8a8a8a" IsReadOnly="True" FontSize="35" Width="40" Height="40"/>
-                    <TextBox BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="InvitationCode" Width="240" Height="40" FontSize="20"/>
+                    <TextBox Visibility="Visible" BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Name="CodePng" Text="&#xe600;" FontFamily="../Assets/fonts/#iconfont" Foreground="#8a8a8a" IsReadOnly="True" FontSize="35" Width="40" Height="40"/>
+                    <TextBox Visibility="Hidden" IsReadOnly="True" BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="InvitationCode" Width="240" Height="40" FontSize="20"/>
                 </Grid>
                 <Button Name="CheckIn" Background="#007DFA" Content="登录" FontSize='20' Foreground="White" FontWeight="Bold" Grid.Row="3" Height="40" Click="Button_Click"/>
             </Grid>
