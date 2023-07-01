@@ -3,10 +3,93 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:InfoManager"
+        xmlns:local="clr-namespace:InfoManager" xmlns:common="clr-namespace:InfoManager.Common" xmlns:model="clr-namespace:InfoManager.Model"
         mc:Ignorable="d"
-        Title="MainView" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Welcome Listen" Height="600" Width="950"
+        FontFamily="Microsoft YaHei" FontWeight="ExtraLight"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
+    <Window.Resources>
+        <ResourceDictionary Source="../Assets/style/ButtonDictionary.xaml" />
+    </Window.Resources>
+    <Border Margin="5" Background="White" CornerRadius="10">
+        <Border.Effect>
+            <DropShadowEffect Color="Gray" Opacity="0.4" />
+        </Border.Effect>
+        <Grid>
+            <Border Background="White" Height="110" VerticalAlignment="Top" CornerRadius="10,10,0,0" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button Height="40" Width="40" Template="{StaticResource ForkButton}" Content="&#xe642;" Foreground="BurlyWood" />
+                <Button Height="40" Width="40" Template="{StaticResource ForkButton}" Content="&#xe600;" Foreground="BurlyWood" />
+                <Button Height="40" Width="40" Template="{StaticResource ForkButton}" Content="&#xe61b;" Foreground="BurlyWood" />
+            </StackPanel>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8*"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left" VerticalAlignment="Center">
+                    <TextBlock Text="Welcome Listen" FontSize="30" FontWeight="Bold" FontStyle="Italic" Foreground="White" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <TextBlock Text="vip" FontWeight="Bold" Foreground="Wheat" Margin="30"/>
+                </StackPanel>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="4*" />
+                    </Grid.ColumnDefinitions>
+                    <Border Background="#09000000" MouseLeftButtonDown="Border_MouseLeftButtonDown"/>
+                    <Border Background="#09000000" Grid.Column="1"/>
+                    <StackPanel Grid.Column="0">
+                        <StackPanel HorizontalAlignment="Left">
+                            <Border Width="100" Height="100" CornerRadius="40">
+                                <Border.Background>
+                                    <ImageBrush ImageSource="../Assets/MusicLogo/logo.png" />
+                                </Border.Background>
+                                <Border.Effect>
+                                    <DropShadowEffect Color="Gray"></DropShadowEffect>
+                                </Border.Effect>
+                            </Border>
+                        </StackPanel>
+                        <RadioButton Content="首页" Tag="&#xe64f;" Style="{StaticResource MenuButtonStyle}" IsChecked="True"/>
+                        <RadioButton Content="精品歌单" Tag="&#xe60e;" Style="{StaticResource MenuButtonStyle}" />
+                        <RadioButton Content="歌手推荐" Tag="&#xe65d;" Style="{StaticResource MenuButtonStyle}" />
+                        <Label Content="音乐分类" Tag="&#xe605;" Style="{StaticResource MenuLabelStyle}" Margin="0,15,0,0"/>
+                        <UniformGrid Columns="2" Margin="40,0,10,0">
+                            <RadioButton Content="流行" Style="{StaticResource ClassButtonStyle}" IsChecked="True"/>
+                            <RadioButton Content="民谣" Style="{StaticResource ClassButtonStyle}" />
+                            <RadioButton Content="古典" Style="{StaticResource ClassButtonStyle}" />
+                            <RadioButton Content="恋爱" Style="{StaticResource ClassButtonStyle}" />
+                            <RadioButton Content="伤感" Style="{StaticResource ClassButtonStyle}" />
+                            <RadioButton Content="乐器" Style="{StaticResource ClassButtonStyle}" />
+                        </UniformGrid>
+                        <Label Content="我的音乐" Tag="&#xe600;" Style="{StaticResource MenuLabelStyle}" Background="Transparent" Margin="0,15,0,0"/>
+                        <ItemsControl ItemsSource="{Binding Slist}" Margin="40,0,10,0">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <RadioButton Content="{Binding Header}" Tag="{Binding Icon}" Style="{StaticResource SheetButtonStyle}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Border MouseLeftButtonDown="Border_MouseLeftButtonDown" />
+                        <Border  Grid.Row="1">
+                            <ScrollViewer Visibility="Hidden">
+                            </ScrollViewer>
+                        </Border>
+                        <TextBlock Grid.Row="1" Text="热门专辑" FontSize="20" FontWeight="Bold" Foreground="#555"/>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Border>
 </Window>

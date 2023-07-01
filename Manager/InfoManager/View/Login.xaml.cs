@@ -59,7 +59,11 @@ namespace InfoManager.View
                                 else
                                 {
                                     //登录成功以后再写吧
-                                    MessageBox.Show(loginInfo.str_loginSuccess);
+                                    Application.Current.Dispatcher.Invoke(new Action(() =>
+                                    {
+                                        this.window.DialogResult = true;
+                                    }));
+
 
                                 }
                             }

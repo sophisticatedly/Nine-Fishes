@@ -39,13 +39,13 @@
             <StackPanel VerticalAlignment="Bottom">
                 <Border Width="100" Height="100" CornerRadius="40">
                     <Border.Background>
-                        <ImageBrush ImageSource="../Assets/logo.jpg" />
+                        <ImageBrush ImageSource="../Assets/logo.png" />
                     </Border.Background>
                     <Border.Effect>
                         <DropShadowEffect Color="Gray"></DropShadowEffect>
                     </Border.Effect>
                 </Border>
-                <TextBlock Text="员工信息管理平台" FontSize='20' Foreground="White" FontWeight="Bold"  HorizontalAlignment="Center" Margin="20"/>
+                <TextBlock Text="Listen" FontSize='20' Foreground="Wheat" FontWeight="Bold"  HorizontalAlignment="Center" Margin="20"/>
             </StackPanel>
             <Grid Grid.Row="1" Margin="10">
                 <Grid.RowDefinitions>
@@ -61,7 +61,7 @@
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox BorderThickness="0" HorizontalAlignment="Left" Grid.Column="0" Text="&#xe609;" FontSize="35" Foreground="#8a8a8a" FontFamily="../Assets/fonts/#iconfont" IsReadOnly="True" Width="40" Height="40"/>
-                    <TextBox BorderThickness="1"  HorizontalAlignment="Left" Grid.Column="1" Text="{Binding LoginModel.UserName}" Name="UserName" Width="240" Height="40" FontSize="20"/>
+                    <TextBox BorderThickness="1"  HorizontalAlignment="Left" Grid.Column="1" Text="{Binding LoginModel.UserName}" Name="UserName" VerticalContentAlignment="Center"  Width="240" Height="40" FontSize="20"/>
                 </Grid>
                 <Grid Grid.Row="1"  >
                     <Grid.ColumnDefinitions>
@@ -70,7 +70,7 @@
                     </Grid.ColumnDefinitions>
                     <TextBox BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Text="&#xe60a;" FontSize="35" Foreground="#8a8a8a"  FontFamily="../Assets/fonts/#iconfont" IsReadOnly="True" Width="40" Height="40"/>
                     <Border CornerRadius="10"/>
-                    <TextBox Grid.Column="1" BorderThickness="1"  HorizontalAlignment="Left" Name="PassWord" Width="240" Height="40" FontSize="20"/>
+                    <TextBox Grid.Column="1" BorderThickness="1"  HorizontalAlignment="Left" Name="PassWord" VerticalContentAlignment="Center"  Width="240" Height="40" FontSize="20"/>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -78,9 +78,9 @@
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
                     <TextBox Visibility="Visible" BorderThickness="0" Grid.Column="0" HorizontalAlignment="Left" Name="CodePng" Text="&#xe600;" FontFamily="../Assets/fonts/#iconfont" Foreground="#8a8a8a" IsReadOnly="True" FontSize="35" Width="40" Height="40"/>
-                    <TextBox Visibility="Hidden" IsReadOnly="True" BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="InvitationCode" Width="240" Height="40" FontSize="20"/>
+                    <TextBox Visibility="Hidden" IsReadOnly="True" BorderThickness="1"  Grid.Column="1" HorizontalAlignment="Left" Name="InvitationCode" VerticalContentAlignment="Center"  Width="240" Height="40" FontSize="20"/>
                 </Grid>
-                <Button Name="CheckIn" Background="#007DFA" Content="登录" FontSize='20' Foreground="White" FontWeight="Bold" Grid.Row="3" Height="40" Click="Button_Click"/>
+                <Button Name="CheckIn" Background="#007DFA" Content="登录" FontSize='20' Foreground="White" FontWeight="Bold" Grid.Row="3" Height="40" Click="Button_Click" />
             </Grid>
         </Grid>
     </Border>

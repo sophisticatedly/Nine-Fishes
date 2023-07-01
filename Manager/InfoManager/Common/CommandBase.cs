@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace InfoManager.Common
 {
-    class CommandBase : ICommand
+    public class CommandBase : ICommand
     {
         public event EventHandler CanExecuteChanged;
 

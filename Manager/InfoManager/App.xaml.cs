@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using InfoManager.View;
 using System.Windows;
 
 namespace InfoManager
@@ -13,5 +8,14 @@ namespace InfoManager
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            if (new Login().ShowDialog() == true)
+            {
+                new MainView().ShowDialog();
+            }
+            Application.Current.Shutdown();
+        }
     }
 }

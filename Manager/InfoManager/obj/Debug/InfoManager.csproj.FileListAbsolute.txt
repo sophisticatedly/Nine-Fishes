@@ -56,3 +56,5 @@ D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.csp
 D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.csproj.CoreCompileInputs.cache
 D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.exe
 D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.pdb
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\App.baml
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\Assets\style\ButtonDictionary.baml
