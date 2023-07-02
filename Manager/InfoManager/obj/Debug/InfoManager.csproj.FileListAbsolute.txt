@@ -58,3 +58,8 @@ D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.exe
 D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.pdb
 D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\App.baml
 D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\Assets\style\ButtonDictionary.baml
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\View\pages\FirstPage.g.cs
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\GeneratedInternalTypeHelper.g.cs
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\View\pages\FirstPage.baml
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\bin\Debug\HtmlAgilityPack.NetCore.dll
+D:\测试拉取代码2\Nine-Fishes\Manager\InfoManager\obj\Debug\InfoManager.csproj.CopyComplete
